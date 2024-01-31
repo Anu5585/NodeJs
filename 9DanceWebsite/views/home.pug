@@ -1,0 +1,37 @@
+extends base.pug
+
+block scripts
+  script(src='/static/index.js')
+
+  block style 
+    style
+      include ../static/style.css
+
+    block content 
+    nav#navbar
+        ul#navbar
+            li #[a(href = '/') Home]
+            li #[a(href = '/') About]
+            li #[a(href = '/') Services]
+            li #[a(href = '/') Class Info]
+            li #[a(href = "/contact.pug") Contact us]
+
+    section#introSection
+        div Welcome To Annas's Academy 
+        div.small Live Learn Dance 
+
+    section#missionSection 
+        h2 Our Mission
+        div.card 
+            h3 Dance Perfection
+        div.card 
+            h3 Dance the way you like   
+        div.card 
+            h3 Expert Teaching  
+    section#sponsersSection 
+        h2 OurSponcers
+
+    footer#footer   
+        | Our footer here
+    script
+      include ../static/index.js

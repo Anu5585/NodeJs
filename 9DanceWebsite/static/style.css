@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+#navbar{
+    background-color: rgb(188, 93, 226);
+    padding: 16px 14px;
+
+}
+#navbar ul{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+#navbar li {
+    list-style: none;
+}
+#navbar li a{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 14px 20px;
+
+}
+#navbar li a:hover{
+    color: black;
+
+
+}
+
+#introSection{
+    color: rgba(255, 5, 5, 0.844);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    background: center / cover no-repeat url("/static/bg.jpg");
+    height: 300px;
+    background-color: sienna;
+}
+#introSection div.small{
+    font-size: 27px;
+}
+#sponsersSection{
+height: 300px;
+background-color: rgb(211, 237, 159);
+}
+#missionSection{
+    height: 326px;
+    width: 67%;
+    justify-content: center;
+    text-align: center;
+    padding-top: 12px;
+    margin: auto;
+
+
+}
+#missionSection h2{
+    text-align: center;
+    padding-top: 12px;
+}
+.card{
+
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 30%;
+    margin: 23px 16px;
+    height: 209px;
+    background: linear-gradient(rgb(248, 77, 77) ,blue, grey,brown);
+}
+.card h3{
+    text-align: center;
+    margin: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#sponsersSection h2{
+    text-align: center;
+    padding-top: 12px;
+}
+#footer{
+    background-color: yellow;
+    height: 100px;
+
+}

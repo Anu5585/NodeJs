@@ -1,0 +1,345 @@
+node js sy about py ja k code copy kro :
+
+const http = require('node:http');
+const hostname = '127.0.0.1';
+const port = 3000;
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+
+ismn ye chning must kro agr html chalani h 
+jdr hello word likha hua h waha `` lgao or html copy krfo  or
+
+uper jdr text/plain h udr text/html krna h bs 
+
+ctrl c sy server end then again run server like node file name (node index.js )
+
+Moduels : 
+node js modules py sray mily gy 
+
+how to use moduels :
+1st =  include the module 
+esy: agr hm koi file read krna chty h to ye kry gy  
+
+const fs = require('fs');
+// for reading modules from the filesystem
+
+const text  = fs.readFileSync("prtc.txt", "utf8");
+console.log(text);
+
+esy read write or replace krty h 
+let fs = require('fs');
+// for reading modules from the filesystem
+let text  = fs.readFileSync("prtc.txt", "utf8");
+//for replacing file content 
+text = text.replace("browser " , "Annas");
+
+console.log(text);
+
+// for writing in file 
+console.log("creating a new file");
+fs.writeFileSync("Annas.txt",text)
+
+hr type ka module internet py mill jata ha 
+
+
+
+
+* Bloccking or Non Blocking Code: 
+// line by line execution = synchronus  = blocking 
+// line by line execution not guaranteed  callbacks will fire  = Asynchronous = Non blocking
+
+const fs = require('fs');
+
+let  text = fs.readFile("Annas.txt","utf8",(err,data)=>{
+    console.log(err,data);
+})
+
+console.log("msg");
+
+
+
+* Serving html files : 
+// read file
+const http = require('http')
+
+const fs = require('fs')
+
+const fileContent = fs.readFileSync('i.html')
+
+//making server
+
+const server = http.createServer ( (req, res)=>{
+    res.writeHead(200, { 'Content-type': 'text/html'});
+
+    res.end(fileContent)
+})
+//making port 
+server.listen(80,'127.0.0.1', ()=>{  // port 80 ka faida ye h k hum just 127.0.0.1 likh k access kr skty h agr koi or port lyty to wo mention krni prti port 
+    console.log("Listing on port 80"); 
+})
+
+
+*creating custom Backend : 
+const http = require('http');
+
+const fs = require('fs');
+
+// copy 2lines from node js website about sy 
+const hostname = '127.0.0.1';
+const port = 3000;
+
+//making our own server ye 1 call back lyta h  // ye sab about sy b mill jaye ga website  sy 
+const server = http.createServer((req,res)=>{
+    console.log(req.url);
+res.statusCode = 200;
+res.setHeader('Content-Type', 'text/html');
+res.end("Annnas")
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
+
+
+const http = require("http");
+
+const fs = require("fs");
+
+// copy 2lines from node js website about sy
+const hostname = "127.0.0.1";
+const port = 3000;
+const home = fs.readFileSync("index.html");
+const about = fs.readFileSync("./about.html");
+const services = fs.readFileSync("./services.html");
+const contact = fs.readFileSync("./contact.html");
+//making our own server ye 1 call back lyta h  // ye sab about sy b mill jaye ga website  sy
+const server = http.createServer((req, res) => {
+  console.log(req.url);
+  url = req.url;
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  if(url == '/'){
+    res.end(home);
+  }
+  else if(url == '/about'){
+  res.end(about);
+  }
+  else if(url == '/services'){
+  res.end(services);
+  }
+  else if(url == '/contact'){
+  res.end(contact);
+  }
+  else{
+    res.statusCode = 404;
+    res.end("<h1>404 Not Found</h1>");
+  }
+});
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+baqi 5th folder mn sab h 
+
+
+
+*External Modules : 
+
+two files banao usmn  :
+ 
+1 index.js :  
+
+const mod = require ("./mod")
+console.log(mod.name);
+console.log(mod.avg([3,4]))
+console.log("This is Index.js");
+
+2 mod.js : 
+console.log("This is a Module");
+
+function average(arr) {
+    let sum = 0;
+    arr.forEach(element => {
+        sum += element;
+    });
+    return sum/arr.length;
+}
+module.exports ={
+     avg : average,
+     name: "Annas",
+     repo : "GitHub"
+    
+    }
+esy hm apny external modules export kr skty h 
+
+
+
+
+
+* NPM : 
+
+1st step  :  
+		npm init 
+2nd step : 
+		jo jo qs puchy ga unky answers deny h jesy k 
+		pkg ka name version  , description(apni mrzi ka)
+		baqi enter enter krty jao keyword or author likhna 		h 
+
+		Isk bad hmry vs code mn package.json file ban jaye 		gi
+	
+		pacakge.json npm init ny is folder ko 1 node		 	pacakge k tor py initialize kr dia h
+
+		ab idr jb b hm koi chz add krty jaye gy node isko 		dependencies mn add krta jaye ga 
+
+		npm install pacakge name likhna h 
+		npm uninstall package name 
+	
+		
+
+		agr hm koi specific version hi download krna 			chatay h to us k lie : 
+		eg: hum slugify ka specific version krna chatay h 		ya koi b as such to method ye hoga:
+		npm install slugify@1.3.5 (1:major fn 2:minor 			3:patch)
+		^ iska mtlb hota h k ye exactly yehi install kry 		ga
+			
+		~ is ka mtlb hota h k koi b new patch aya h to 			usko detect kr k us latest version ko install krdy 		ga
+		what is dev dependencies: 
+		eg:
+		nodemon (is sy hm jb sy run kr dy to bagir server 		restart kiye hue ye auto changes safe kerta h )
+		npm install nodemon --save-dev
+		1or triqa : nodemon app.js esy ya jo b file k nam h 
+		how to install nodemon globally ?
+		
+		npm install nodemon --global
+
+		
+		
+
+*		what is postman ?
+
+		psotman = ye 1 app h jo  postrequest getrequest ye sab ki sab requests 1 URL k through ya 1 custom headers k though marny mn help krta h orr ye post marny k bad hm response 		ko directly  is app mn dekhty h esa krny ka faida ye hoga k hmy agr javascript node application likhay ki zururat nai h koi fetch api use krny ki zururat nai 
+
+		
+
+ * 		Express : 
+		is a web application framework for node js
+
+express ko use krny k lie :
+npm init 
+npm i express 
+
+custom backend k lie express best h 
+us k bad ye esy code likhna h :
+
+// import express module
+// import express module
+const express = require('express');
+
+const app = express(); //app initialize
+const port =80; //knsi port py run krni h 
+app.get("/",(req,res)=>{ 
+res.send("This is home page of my first express app")
+
+});
+
+//status code esy bhjty h 
+app.get("/",(req,res)=>{ 
+res.status(200).send("This is home page of my first express app")
+
+});
+
+app.get("/about",(req,res)=>{
+res.send("This is about page my first express app")
+
+});
+app.post("/about",(req,res)=>{
+res.send("This is  post req about page my first express app")
+
+});
+
+app.listen(port,()=>{
+    console.log(`The App is started sucessfully on port ${port}`);
+})
+phr postman sy get req kr k esy chk kr skty : 
+localhost:80
+
+
+
+
+
+How to serve static files in node js 
+static file wo file hoti jo  k hm publically rkhna chaty  h apny server mn mtlb koi b usy use kr skta h  koi b agr ksi ko uska link mill gya bagir login kiye huy hmri website ko acess kr skta h   
+
+app.use('/static', express.static('static')) //idr sy agla topic h static wala  //localhost/static/index.js esy search kry  k dekhy gy
+eg:
+index.js file mn kch deta pra hua h  or usko acccess kr esy kry gy uper app.use mn likha hua h 
+
+
+
+Node js template engines: 
+installing pug template from google: pug node js express
+
+1st : npm install pug --save
+2nd :app.set('view engine', 'pug') terminal mn nai uper use krna h jdr app.use kiya h usk nechy 
+
+1 folder banana h views ka us mn file dalni h pug.demo usmn h kch b rkh skty h or sab idr sy copy paste 
+https://expressjs.com/en/guide/using-template-engines.html
+
+const path = require('path');
+
+app.use('/static', express.static('static')) //idr sy agla topic h static wala  //localhost/static/index.js esy search kry  k dekhy gy
+// set the template engine as pug
+app.set('view engine', 'pug')
+
+// set the views directory 
+app.set('views',path.join(__dirname,'views'))
+app.get("/demo",(req,res)=>{ 
+    res.render('demo', { title: 'Hey', message: 'Hello there!' })
+
+});
+agr hmri file acess nai ho rai ya path sahi nai mill ra to ../  1 directory bhr jaa k dekhi ja skti h 
+how to use pug and how to write normal html  in pug
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#{title} </title>
+    style
+      include ../style.css  
+
+</head>
+<body>
+    <nav>
+        <ul>
+            
+            <li><a href="/"> Home</a></li>
+            <li><a href="/"> About</a></li>
+            <li><a href="/"> Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+    <h1>Get this GYM Membership </h1>
+    <!-- <p>
+      |  #{content}
+    </p> -->
+    <form action="/" id="contact">
+        <input type="text" name="name" id="name" placeholder="Enter Your Name">
+        <input type="text" name="age" id="age" placeholder="Enter Your age">
+        <input type="text" name="gender" id="gender" placeholder="Enter Your gender">
+        <textarea name="address" id="address" cols="30" rows="10" placeholder="Enter your Address"></textarea>
+        <textarea name="more" id="more" cols="30" rows="10" placeholder="More about you."></textarea>
+        <button class="btn">Submit</button>
+    </form>
+</div>
+</body>
+</html>
+
+baqi sab 8Express waly folder mn h 
+
